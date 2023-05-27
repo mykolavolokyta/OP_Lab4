@@ -25,23 +25,13 @@ void WAVExtender::extend(std::string result) {
 		36 + file.subchunk2.subchunk2Size * n,
 		file.riffheader.format };
 
-	SUBCHUNK1 _subchunk1{
-		file.subchunk1.subchunk1Id,
-		file.subchunk1.subchunk1Size,
-		file.subchunk1.audioFormat,
-		file.subchunk1.numChannels,
-		file.subchunk1.sampleRate / n,
-		file.subchunk1.byteRate,
-		file.subchunk1.blockAlign * n,
-		file.subchunk1.bitsPerSample * n
-	};
 
 	SUBCHUNK2 _subchunk2{
 		file.subchunk2.subchunk2Id,
 		file.subchunk2.subchunk2Size * n
 	};
 	out.write((char*)&_riffheader, sizeof(RIFFHEADER));
-	out.write((char*)&_subchunk1, sizeof(SUBCHUNK1));
+	out.write((char*)&file.subchunk1, sizeof(SUBCHUNK1));
 	out.write((char*)&_subchunk2, sizeof(SUBCHUNK2));
 	out.write((char*)new_data, file.subchunk2.subchunk2Size * n);
 	out.close();
