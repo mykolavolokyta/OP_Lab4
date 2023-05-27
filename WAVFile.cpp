@@ -33,8 +33,15 @@ WAVFile::WAVFile(std::string _filename) : filename(_filename) {
 	if (subchunk2.subchunk2Id != 0x61746164) throw std::exception("[ERROR] Bad format!");
 
 	data = new int8_t[subchunk2.subchunk2Size];
-	in.read((char*)data, sizeof(data));
+	in.read((char*)data, subchunk2.subchunk2Size);
 	in.close();
+}
+
+WAVFile::WAVFile(const WAVFile& file): riffheader(file.riffheader), subchunk1(file.subchunk1), subchunk2(file.subchunk2) {
+	data = new int8_t[subchunk2.subchunk2Size];
+	for (int i = 0; i < subchunk2.subchunk2Size; i++) {
+		data[i] = file.data[i];
+	}
 }
 
 WAVFile::~WAVFile() {

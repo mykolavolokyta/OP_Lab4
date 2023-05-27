@@ -21,6 +21,12 @@
     <ClCompile Include="WAVFile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="WAVExtender.h">
+      <Filter>Header Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WAVExtender.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="WAVFile.h">

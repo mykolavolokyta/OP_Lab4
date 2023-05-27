@@ -33,5 +33,7 @@ class WAVFile {
     int8_t* data;         // семпли
 public:
     WAVFile(std::string);
+    WAVFile(const WAVFile&);
     ~WAVFile();
+    friend class WAVExtender;
 };

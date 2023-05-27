@@ -128,6 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="WAVExtender.cpp" />
+    <ClCompile Include="WAVExtender.h" />
     <ClCompile Include="WAVFile.cpp" />
   </ItemGroup>
   <ItemGroup>
